@@ -19,7 +19,7 @@ export const partnersData: PartnersSectionData = {
   title: "Nossos Parceiros",
   cta: {
     label: "Seja Parceiro",
-    href: "/",
+    href: "https://gavioes.com.br/anuncie.php",
   },
   items: [
     {

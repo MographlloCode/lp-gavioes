@@ -1,23 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
+import type { MouseEvent } from "react";
 
 interface IProductCase {
   name: string;
   imgLink: string;
+  href: string;
   isActive?: boolean;
-  onSelect?: () => void;
+  onSelect?: (event: MouseEvent<HTMLAnchorElement>) => void;
   preload?: boolean;
 }
 
 export function ProductCase({
   name,
   imgLink,
+  href,
   isActive = false,
   onSelect,
   preload = false,
 }: IProductCase) {
   return (
-    <button
-      type="button"
+    <Link
+      href={href}
+      target="_blank"
+      rel="noreferrer"
       onClick={onSelect}
       aria-label={`Ir para ${name}`}
       className="relative h-[300px] w-[300px] shrink-0 cursor-pointer overflow-hidden bg-black text-left"
@@ -35,6 +41,6 @@ export function ProductCase({
             : "brightness-50 opacity-95 hover:brightness-75",
         ].join(" ")}
       />
-    </button>
+    </Link>
   );
 }

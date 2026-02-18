@@ -12,6 +12,7 @@ type NewsArticleCardProps = {
 };
 
 export function NewsArticleCard({ item, featured = false }: NewsArticleCardProps) {
+  const isExternalImage = item.imageSrc.startsWith("http://") || item.imageSrc.startsWith("https://");
   const articleClassName = featured
     ? "flex flex-col gap-2"
     : "flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-5";
@@ -30,7 +31,15 @@ export function NewsArticleCard({ item, featured = false }: NewsArticleCardProps
       whileHover={{ y: -2 }}
     >
       <motion.div className={imageClassName} whileHover={{ scale: 1.01 }} transition={{ duration: 0.2, ease: "easeOut" }}>
-        <Image src={item.imageSrc} alt={item.imageAlt} width={800} height={400} className="h-full w-full object-cover" />
+        <Image
+          src={item.imageSrc}
+          alt={item.imageAlt}
+          width={800}
+          height={400}
+          unoptimized={isExternalImage}
+          referrerPolicy="no-referrer"
+          className="h-full w-full object-cover"
+        />
       </motion.div>
 
       <div className="flex flex-col gap-2">

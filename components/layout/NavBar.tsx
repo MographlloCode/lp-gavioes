@@ -11,78 +11,14 @@ import {
   BiLogoTwitter,
 } from "react-icons/bi";
 import { NavDropdown } from "./NavDropdown";
-import { NavLink, type NavItem } from "./NavLink";
+import { NavLink } from "./NavLink";
 import { NavMobileDrawer } from "./NavMobileDrawer";
+import { navbarData } from "./navbarData";
+import { getPhpLinkTargetProps } from "./linkUtils";
 
-const navItems: NavItem[] = [
-  {
-    id: "gavioes",
-    name: "Gaviões da Fiel",
-    dropdown: [
-      {
-        id: "group_01",
-        name: "Nós",
-        items: [
-          { id: "nos_subitem_01", name: "Associe-se", link: "/" },
-          { id: "nos_subitem_02", name: "Conselho", link: "/" },
-          { id: "nos_subitem_03", name: "Diretoria", link: "/" },
-          { id: "nos_subitem_04", name: "Ex-presidentes", link: "/" },
-          { id: "nos_subitem_05", name: "Estatuto Gaviões da Fiel", link: "/" },
-          { id: "nos_subitem_06", name: "Subsedes", link: "/" },
-        ],
-      },
-      {
-        id: "group_02",
-        name: "Torcida",
-        items: [
-          { id: "torcida_subitem_01", name: "Responsabilidade Social", link: "/" },
-          { id: "torcida_subitem_02", name: "Ideologia", link: "/" },
-          { id: "torcida_subitem_03", name: "Letras de Músicas", link: "/" },
-        ],
-      },
-      {
-        id: "group_03",
-        name: "Carnaval",
-        items: [
-          { id: "carnaval_subitem_01", name: "Enredo", link: "/" },
-          { id: "carnaval_subitem_02", name: "Escolinha de Bateria", link: "/" },
-          { id: "carnaval_subitem_03", name: "História", link: "/" },
-          { id: "carnaval_subitem_04", name: "Shows", link: "/" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "corinthians",
-    name: "Corinthians",
-    dropdown: [
-      {
-        id: "corinthians_group",
-        items: [
-          { id: "corinthians_subitem_01", name: "Time Profissional", link: "/" },
-          { id: "corinthians_subitem_02", name: "Base", link: "/" },
-          { id: "corinthians_subitem_03", name: "Modalidades", link: "/" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "multimidia",
-    name: "Multimídia",
-    dropdown: [
-      {
-        id: "multimidia_group",
-        items: [
-          { id: "multimidia_subitem_01", name: "Fotos", link: "/" },
-          { id: "multimidia_subitem_02", name: "Vídeos", link: "/" },
-          { id: "multimidia_subitem_03", name: "Podcasts", link: "/" },
-        ],
-      },
-    ],
-  },
-  { id: "noticias", name: "Notícias", link: "/" },
-  { id: "contato", name: "Contato", link: "/" },
-];
+const { navItems } = navbarData;
+const brandHref = "https://gavioes.com.br/index.php";
+const brandPhpLinkTargetProps = getPhpLinkTargetProps(brandHref);
 
 export function NavBar() {
   const [activeDropdownId, setActiveDropdownId] = useState<string | null>(null);
@@ -122,7 +58,11 @@ export function NavBar() {
       className="relative flex items-center justify-between bg-black p-4 font-helvetica text-white"
       onMouseLeave={() => setActiveDropdownId(null)}
     >
-      <Link href={"/ "} className="mt-1 font-helvetica-condensed text-xl leading-none font-black uppercase">
+      <Link
+        href={brandHref}
+        {...brandPhpLinkTargetProps}
+        className="mt-1 font-helvetica-condensed text-xl leading-none font-black uppercase"
+      >
         Gaviões da Fiel
       </Link>
       <div className="hidden items-center gap-4 lg:flex">
@@ -181,7 +121,7 @@ export function NavBar() {
         </nav>
         <Link
           href="https://www.lojagavioes.com.br/"
-          target="__blank"
+          target="_blank"
           className="flex items-center gap-1 rounded-sm bg-zinc-900 px-4 py-2 text-sm"
         >
           <span className="mt-1 whitespace-nowrap font-helvetica-condensed font-bold tracking-wide">
@@ -202,7 +142,7 @@ export function NavBar() {
         </button>
       </div>
 
-      <Link href={"https://www.lojagavioes.com.br/"} target="__blank" className="hidden items-center gap-1 px-4 py-2 text-sm lg:flex">
+      <Link href={"https://www.lojagavioes.com.br/"} target="_blank" className="hidden items-center gap-1 px-4 py-2 text-sm lg:flex">
         <span className="mt-1 whitespace-nowrap font-helvetica-condensed font-bold tracking-wide">
           Loja Oficial
         </span>

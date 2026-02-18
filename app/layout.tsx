@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AppLoadingGate } from "@/components/loading/AppLoadingGate";
+import { ScrollToTopButton } from "@/components/common/ScrollToTopButton";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -26,6 +27,7 @@ export default function RootLayout({
           <div className="w-full h-px bg-zinc-800 mb-10"></div>
           <Footer/>
           <Copyright />
+          <ScrollToTopButton />
         </AppLoadingGate>
       </body>
     </html>

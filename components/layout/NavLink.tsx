@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BiChevronDown } from "react-icons/bi";
+import { getPhpLinkTargetProps } from "./linkUtils";
 
 export type DropdownItem = {
   id: string;
@@ -38,9 +39,13 @@ export function NavLink({
   const hasDropdown = Boolean(item.dropdown?.length);
 
   if (!hasDropdown) {
+    const href = item.link ?? "/";
+    const phpLinkTargetProps = getPhpLinkTargetProps(href);
+
     return (
       <Link
-        href={item.link ?? "/"}
+        href={href}
+        {...phpLinkTargetProps}
         className="font-medium transition-colors duration-200 hover:text-white/80"
       >
         {item.name}

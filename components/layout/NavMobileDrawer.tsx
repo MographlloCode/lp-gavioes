@@ -10,6 +10,7 @@ import {
   BiX,
 } from "react-icons/bi";
 import type { NavItem } from "./NavLink";
+import { getPhpLinkTargetProps } from "./linkUtils";
 
 interface INavMobileDrawer {
   open: boolean;
@@ -92,10 +93,14 @@ export function NavMobileDrawer({
                   const hasDropdown = Boolean(item.dropdown?.length);
 
                   if (!hasDropdown) {
+                    const href = item.link ?? "/";
+                    const phpLinkTargetProps = getPhpLinkTargetProps(href);
+
                     return (
                       <motion.li key={item.id} variants={menuItemVariants}>
                         <Link
-                          href={item.link ?? "/"}
+                          href={href}
+                          {...phpLinkTargetProps}
                           className="font-helvetica-condensed text-lg font-bold uppercase tracking-wide"
                           onClick={onClose}
                         >
@@ -141,17 +146,24 @@ export function NavMobileDrawer({
                                     </h3>
                                   ) : null}
                                   <ul className="space-y-2">
-                                    {group.items.map((subItem) => (
-                                      <li key={subItem.id}>
-                                        <Link
-                                          href={subItem.link}
-                                          className="text-base text-white/85 transition-colors duration-200 hover:text-white"
-                                          onClick={onClose}
-                                        >
-                                          {subItem.name}
-                                        </Link>
-                                      </li>
-                                    ))}
+                                    {group.items.map((subItem) => {
+                                      const phpLinkTargetProps = getPhpLinkTargetProps(
+                                        subItem.link
+                                      );
+
+                                      return (
+                                        <li key={subItem.id}>
+                                          <Link
+                                            href={subItem.link}
+                                            {...phpLinkTargetProps}
+                                            className="text-base text-white/85 transition-colors duration-200 hover:text-white"
+                                            onClick={onClose}
+                                          >
+                                            {subItem.name}
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 </div>
                               ))}
@@ -174,7 +186,7 @@ export function NavMobileDrawer({
             >
               <Link
                 href="https://www.lojagavioes.com.br/"
-                target="__blank"
+                target="_blank"
                 className="inline-flex items-center gap-2 rounded-sm bg-zinc-900 px-3 py-2 font-helvetica-condensed text-sm font-bold uppercase tracking-wide"
                 onClick={onClose}
               >
