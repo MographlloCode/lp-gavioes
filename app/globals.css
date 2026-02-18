@@ -1,5 +1,166 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-UltraLight.otf")
+    format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-UltraLightItalic.otf")
+    format("opentype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-ThinItalic.otf")
+    format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-LightItalic.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Roman.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Medium.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-MediumItalic.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-BoldItalic.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Heavy.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-HeavyItalic.otf")
+    format("opentype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-Black.otf")
+    format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-BlackItalic.otf")
+    format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Condensed Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-CondensedBlack.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Condensed Local";
+  src: url("./assets/fonts/helvetica/HelveticaNeue-CondensedBlackOblique.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,8 +169,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-helvetica: "Helvetica Neue Local", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-helvetica-condensed: "Helvetica Neue Condensed Local",
+    "Helvetica Neue Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-sans: var(--font-helvetica);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +185,12 @@
   }
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
