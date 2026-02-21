@@ -16,8 +16,14 @@ export type ContactLocationGroup = {
   locations: ContactLocation[];
 };
 
+export type ContactSocialLabel =
+  | "Instagram"
+  | "YouTube"
+  | "X / Twitter"
+  | "Facebook";
+
 export type ContactSocialLink = {
   id: string;
-  label: string;
+  label: ContactSocialLabel;
   href: string;
 };
