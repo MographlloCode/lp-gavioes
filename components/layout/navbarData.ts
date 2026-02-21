@@ -8,14 +8,14 @@ export const navbarData: { navItems: NavItem[] } = {
       dropdown: [
         {
           id: "group_01",
-          name: "Nós",
           items: [
             { id: "nos_subitem_01", name: "Associe-se", link: "https://gavioes.com.br/associe-se.php" },
-            { id: "nos_subitem_02", name: "Conselho", link: "https://gavioes.com.br/conselho.php" },
-            { id: "nos_subitem_03", name: "Diretoria", link: "https://gavioes.com.br/diretoria.php" },
-            { id: "nos_subitem_04", name: "Ex-presidentes", link: "https://gavioes.com.br/presidentes.php" },
-            { id: "nos_subitem_05", name: "Estatuto Gaviões da Fiel", link: "https://gavioes.com.br/estatuto-gavioes-da-fiel.php" },
-            { id: "nos_subitem_06", name: "Subsedes", link: "https://gavioes.com.br/sub-sede.php" },
+            { id: "nos_subitem_02", name: "Quem Somos", link: "https://gavioes.com.br/quem-somos.php" },
+            { id: "nos_subitem_03", name: "Conselho", link: "https://gavioes.com.br/conselho.php" },
+            { id: "nos_subitem_04", name: "Diretoria", link: "https://gavioes.com.br/diretoria.php" },
+            { id: "nos_subitem_05", name: "Ex-presidentes", link: "https://gavioes.com.br/presidentes.php" },
+            { id: "nos_subitem_06", name: "Estatuto Gaviões da Fiel", link: "https://gavioes.com.br/estatuto-gavioes-da-fiel.php" },
+            { id: "nos_subitem_07", name: "Subsedes", link: "https://gavioes.com.br/sub-sede.php" },
           ],
         },
         {
@@ -70,6 +70,6 @@ export const navbarData: { navItems: NavItem[] } = {
       ],
     },
     { id: "noticias", name: "Notícias", link: "/noticias" },
-    { id: "contato", name: "Contato", link: "https://gavioes.com.br/contato.php" },
+    { id: "contato", name: "Contato", link: "/contato" },
   ],
 };

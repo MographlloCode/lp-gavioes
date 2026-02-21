@@ -6,6 +6,7 @@ export const footerSections: FooterSection[] = [
     title: "GAVIÕES DA FIEL",
     links: [
       { label: "ASSOCIE-SE", href: "https://gavioes.com.br/associe-se.php" },
+      { label: "QUEM SOMOS", href: "https://gavioes.com.br/quem-somos.php" },
       { label: "CONSELHO", href: "https://gavioes.com.br/conselho.php" },
       { label: "DIRETORIA", href: "https://gavioes.com.br/diretoria.php" },
       { label: "EX-PRESIDENTES", href: "https://gavioes.com.br/presidentes.php" },
@@ -52,7 +53,7 @@ export const footerSections: FooterSection[] = [
 ];
 
 export const footerLinks: FooterLink[] = [
-  { label: "CONTATO", href: "https://gavioes.com.br/contato.php" },
+  { label: "CONTATO", href: "/contato" },
   { label: "NOTÍCIAS", href: "/noticias" },
   { label: "POLÍTICA DE PRIVACIDADE", href: "https://gavioes.com.br/politica-de-privacidade" },
 ];
