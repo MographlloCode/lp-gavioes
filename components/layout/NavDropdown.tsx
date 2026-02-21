@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { DropdownGroup } from "./NavLink";
+import { getPhpLinkTargetProps } from "./linkUtils";
 
 interface INavDropdown {
   content: DropdownGroup[];
@@ -24,16 +25,21 @@ export function NavDropdown({ content, open, onMouseLeave }: INavDropdown) {
               </h3>
             ) : null}
             <ul className="space-y-3 text-base">
-              {group.items.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={item.link}
-                    className="text-white/80 transition-colors duration-200 hover:text-white"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
+              {group.items.map((item) => {
+                const phpLinkTargetProps = getPhpLinkTargetProps(item.link);
+
+                return (
+                  <li key={item.id}>
+                    <Link
+                      href={item.link}
+                      {...phpLinkTargetProps}
+                      className="text-white/80 transition-colors duration-200 hover:text-white"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

@@ -9,6 +9,8 @@ type NewsDesktopCardProps = {
 };
 
 function NewsDesktopCard({ item, featured = false }: NewsDesktopCardProps) {
+  const isExternalImage = item.imageSrc.startsWith("http://") || item.imageSrc.startsWith("https://");
+
   return (
     <article
       className={`group relative overflow-hidden rounded-sm ${
@@ -20,6 +22,8 @@ function NewsDesktopCard({ item, featured = false }: NewsDesktopCardProps) {
         alt={item.imageAlt}
         fill
         sizes={featured ? "(min-width: 1024px) 50vw" : "(min-width: 1024px) 45vw"}
+        unoptimized={isExternalImage}
+        referrerPolicy="no-referrer"
         className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
       />
 

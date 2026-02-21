@@ -1,37 +1,16 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { ProductCaroussel, type ProductItem } from "./ProductCaroussel";
+import { ProductCaroussel } from "./ProductCaroussel";
 import { ProductsInfo } from "./ProductsInfo";
+import { productsData } from "./productsData";
 
 const SWIPE_TRIGGER_PX = 72;
 const MAX_DRAG_OFFSET_PX = 180;
 const TAP_TOLERANCE_PX = 4;
 
-const products: ProductItem[] = [
-  {
-    id: "product_01",
-    name: "camisa_gavioes_01",
-    img_url: "/camisa_gavioes_01.png",
-  },
-  {
-    id: "product_02",
-    name: "camisa_gavioes_02",
-    img_url: "/camisa_gavioes_02.png",
-  },
-  {
-    id: "product_03",
-    name: "camisa_gavioes_03",
-    img_url: "/camisa_gavioes_03.png",
-  },
-  {
-    id: "product_04",
-    name: "shorts_gavioes_01",
-    img_url: "/shorts_gavioes_01.png",
-  },
-];
-
 export function Products() {
+  const products = productsData;
   const totalProducts = products.length;
   const [trackIndex, setTrackIndex] = useState(totalProducts);
   const [isTransitioning, setIsTransitioning] = useState(false);

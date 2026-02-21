@@ -4,40 +4,11 @@ import { useState } from "react";
 import { TopNewsImage } from "./TopNewsImage";
 import { TopNewsItem } from "./TopNewsItem";
 import { TopNewsNav } from "./TopNewsNav";
-
-const news = [
-  {
-    id: "topnews_01",
-    tag: "torcida",
-    title: "Torcida do Corinthians prepara festa especial para Supercopa",
-    tldr:
-      "A Gaviões da Fiel, principal torcida organizada do Corinthians, prepara uma festa especial para o duelo contra o Flamengo, pela Supercopa do Brasil, neste domingo (1º). A bola rola às 16h, no estádio Mané Garrincha, em Brasília (DF).",
-    link: "/",
-    imageLink: "/gavioes_torcida_2.png",
-  },
-  {
-    id: "topnews_02",
-    tag: "carnaval",
-    title: "Torcida do Corinthians prepara festa especial para Supercopa",
-    tldr:
-      "A Gaviões da Fiel, principal torcida organizada do Corinthians, prepara uma festa especial para o duelo contra o Flamengo, pela Supercopa do Brasil, neste domingo (1º). A bola rola às 16h, no estádio Mané Garrincha, em Brasília (DF).",
-    link: "/",
-    imageLink: "/gavioes_torcida.png",
-  },
-  {
-    id: "topnews_03",
-    tag: "corinthians",
-    title: "Torcida do Corinthians prepara festa especial para Supercopa",
-    tldr:
-      "A Gaviões da Fiel, principal torcida organizada do Corinthians, prepara uma festa especial para o duelo contra o Flamengo, pela Supercopa do Brasil, neste domingo (1º). A bola rola às 16h, no estádio Mané Garrincha, em Brasília (DF).",
-    link: "/",
-    imageLink: "/gavioes_torcida_2.png",
-  },
-];
+import { topNewsData } from "./topNewsData";
 
 export function TopNews() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const activeNews = activeIndex !== null ? news[activeIndex] : news[0];
+  const activeNews = activeIndex !== null ? topNewsData[activeIndex] : topNewsData[0];
 
   const toggleNewsItem = (index: number) => {
     setActiveIndex((current) => (current === index ? null : index));
@@ -55,11 +26,11 @@ export function TopNews() {
 
       <nav className="flex w-full flex-col gap-4 bg-black pe-8 md:min-w-96 md:flex-1 lg:min-w-150">
         <div className="order-1 md:order-2">
-          <TopNewsNav total={news.length} activeIndex={activeIndex} onSelect={selectNewsItem} />
+          <TopNewsNav total={topNewsData.length} activeIndex={activeIndex} onSelect={selectNewsItem} />
         </div>
 
         <div className="order-2 flex flex-col gap-4 md:order-1 md:flex-1">
-          {news.map((item, index) => (
+          {topNewsData.map((item, index) => (
             <div key={item.id}>
               <div
                 role="button"
@@ -86,7 +57,7 @@ export function TopNews() {
                   href={item.link}
                 />
               </div>
-              {index < news.length - 1 && <span className="mt-4 block h-px w-full bg-zinc-800" aria-hidden="true" />}
+              {index < topNewsData.length - 1 && <span className="mt-4 block h-px w-full bg-zinc-800" aria-hidden="true" />}
             </div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { FooterSection } from "./types";
+import { getPhpLinkTargetProps } from "../linkUtils";
 
 type FooterMenuSectionProps = {
   section: FooterSection;
@@ -12,16 +13,21 @@ export function FooterMenuSection({ section }: FooterMenuSectionProps) {
         {section.title}
       </h3>
       <ul className="space-y-1.5">
-        {section.links.map((link) => (
-          <li key={`${section.title}-${link.label}`}>
-            <Link
-              href={link.href}
-              className="font-helvetica text-[0.68rem] leading-[1.15] uppercase decoration-white/85 underline-offset-2 transition-opacity hover:opacity-70"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        {section.links.map((link) => {
+          const phpLinkTargetProps = getPhpLinkTargetProps(link.href);
+
+          return (
+            <li key={`${section.title}-${link.label}`}>
+              <Link
+                href={link.href}
+                {...phpLinkTargetProps}
+                className="font-helvetica text-[0.68rem] leading-[1.15] uppercase decoration-white/85 underline-offset-2 transition-opacity hover:opacity-70"
+              >
+                {link.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

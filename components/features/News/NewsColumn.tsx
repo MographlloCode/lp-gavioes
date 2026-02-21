@@ -15,7 +15,7 @@ export function NewsColumn() {
       ))}
 
       <Link
-        href="/"
+        href="https://gavioes.com.br/noticias.php"
         className="font-helvetica-condensed text-xl font-black uppercase underline underline-offset-4 transition-all duration-400 ease-in-out hover:underline-offset-8 sm:text-2xl"
       >
         Ver mais notícias

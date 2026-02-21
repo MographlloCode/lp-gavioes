@@ -5,17 +5,28 @@ import RadioVolumeSettings from "./RadioVolumeSettings";
 import { RadioSoundHighlights } from "./RadioSoundHighlights";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+type PlaybackPreference = "playing" | "paused";
+
+const DEFAULT_VOLUME = 0.35;
+const RADIO_PLAYBACK_PREFERENCE_KEY = "gavioes:radio:playback-preference";
+const RADIO_VOLUME_PREFERENCE_KEY = "gavioes:radio:volume";
+
+const clampVolume = (value: number) => Math.max(0, Math.min(value, 1));
+
 export function RadioBar() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const animationFrameRef = useRef<number | null>(null);
-  const lastVolumeRef = useRef(0.35);
+  const hasInitializedPlaybackRef = useRef(false);
+  const lastVolumeRef = useRef(DEFAULT_VOLUME);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.35);
+  const [volume, setVolume] = useState(DEFAULT_VOLUME);
   const [isMuted, setIsMuted] = useState(false);
+  const [playbackPreference, setPlaybackPreference] = useState<PlaybackPreference>("playing");
+  const [hasLoadedPreferences, setHasLoadedPreferences] = useState(false);
   const [levels, setLevels] = useState<number[]>(() => Array.from({ length: 10 }, () => 0.25));
 
   const barCount = 10;
@@ -69,18 +80,20 @@ export function RadioBar() {
     }
 
     if (audio.paused) {
+      setPlaybackPreference("playing");
       try {
         await audio.play();
       } catch {
         setIsPlaying(false);
       }
     } else {
+      setPlaybackPreference("paused");
       audio.pause();
     }
   };
 
   const handleVolumeChange = (nextVolume: number) => {
-    const safe = Math.max(0, Math.min(nextVolume, 1));
+    const safe = clampVolume(nextVolume);
     setVolume(safe);
     setIsMuted(safe === 0);
     if (safe > 0) {
@@ -101,6 +114,62 @@ export function RadioBar() {
     }
     setIsMuted(true);
   };
+
+  useEffect(() => {
+    try {
+      const storedPlaybackPreference = window.localStorage.getItem(
+        RADIO_PLAYBACK_PREFERENCE_KEY
+      );
+      if (
+        storedPlaybackPreference === "playing" ||
+        storedPlaybackPreference === "paused"
+      ) {
+        setPlaybackPreference(storedPlaybackPreference);
+      }
+
+      const storedVolume = window.localStorage.getItem(
+        RADIO_VOLUME_PREFERENCE_KEY
+      );
+      if (storedVolume !== null) {
+        const parsed = Number(storedVolume);
+        if (Number.isFinite(parsed)) {
+          const safeVolume = clampVolume(parsed);
+          setVolume(safeVolume);
+          setIsMuted(safeVolume === 0);
+          if (safeVolume > 0) {
+            lastVolumeRef.current = safeVolume;
+          }
+        }
+      }
+    } catch {
+      // Ignore storage read errors (private mode / blocked storage).
+    } finally {
+      setHasLoadedPreferences(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasLoadedPreferences) return;
+
+    try {
+      window.localStorage.setItem(
+        RADIO_PLAYBACK_PREFERENCE_KEY,
+        playbackPreference
+      );
+    } catch {
+      // Ignore storage write errors (private mode / blocked storage).
+    }
+  }, [playbackPreference, hasLoadedPreferences]);
+
+  useEffect(() => {
+    if (!hasLoadedPreferences) return;
+
+    try {
+      window.localStorage.setItem(RADIO_VOLUME_PREFERENCE_KEY, String(volume));
+    } catch {
+      // Ignore storage write errors (private mode / blocked storage).
+    }
+  }, [volume, hasLoadedPreferences]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -132,8 +201,19 @@ export function RadioBar() {
   }, []);
 
   useEffect(() => {
+    if (!hasLoadedPreferences || hasInitializedPlaybackRef.current) {
+      return;
+    }
+
+    hasInitializedPlaybackRef.current = true;
+
     const audio = audioRef.current;
     if (!audio) return;
+
+    if (playbackPreference === "paused") {
+      syncPlaybackState();
+      return;
+    }
 
     const startPlayback = async () => {
       if (!audioContextRef.current) {
@@ -150,7 +230,7 @@ export function RadioBar() {
     };
 
     startPlayback();
-  }, []);
+  }, [hasLoadedPreferences, playbackPreference]);
 
   useEffect(() => {
     const tick = () => {

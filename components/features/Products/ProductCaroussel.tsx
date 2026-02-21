@@ -5,6 +5,7 @@ export interface ProductItem {
   id: string;
   name: string;
   img_url: string;
+  href: string;
 }
 
 interface ProductCarousselProps {
@@ -144,13 +145,18 @@ export function ProductCaroussel({
             key={`${product.id}-${index}`}
             name={product.name}
             imgLink={product.img_url}
+            href={product.href}
             isActive={index === trackIndex}
-            onSelect={() => {
+            onSelect={(event) => {
               if (suppressClickRef.current) {
+                event.preventDefault();
                 return;
               }
 
-              onSelectTrackIndex(index);
+              if (index !== trackIndex) {
+                event.preventDefault();
+                onSelectTrackIndex(index);
+              }
             }}
             preload={index >= preloadStart && index <= preloadEnd}
           />
