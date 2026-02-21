@@ -65,8 +65,10 @@ function renderInlineNodes(nodes: InstitutionalInlineNode[], keyPrefix: string) 
 
 export function InstitutionalRichText({ content }: InstitutionalRichTextProps) {
   return (
-    <div className="flex flex-col gap-5 text-[1.05rem] leading-8 text-zinc-800">
+    <div className="space-y-5 text-[1.05rem] leading-8 text-zinc-800">
       {content.map((item, itemIndex) => {
+        const previousItem = content[itemIndex - 1];
+
         if (item.kind === "subheading") {
           return (
             <h3
@@ -86,7 +88,9 @@ export function InstitutionalRichText({ content }: InstitutionalRichTextProps) {
           return (
             <ol
               key={`list-${itemIndex}`}
-              className={`${listClassName} space-y-2`}
+              className={`${listClassName} space-y-2 ${
+                previousItem?.kind === "subheading" ? "-mt-3" : ""
+              }`}
               aria-label="Lista institucional"
             >
               {item.items.map((listItem, listItemIndex) => (

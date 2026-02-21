@@ -1,6 +1,7 @@
 import { InstitutionalColumnsBlock } from "./InstitutionalColumnsBlock";
 import { InstitutionalGalleryBlock } from "./InstitutionalGalleryBlock";
 import { InstitutionalImageBlock } from "./InstitutionalImageBlock";
+import { InstitutionalLocationBlock } from "./InstitutionalLocationBlock";
 import { InstitutionalQuoteBlock } from "./InstitutionalQuoteBlock";
 import { InstitutionalRichText } from "./InstitutionalRichText";
 import { InstitutionalTextWithImageBlock } from "./InstitutionalTextWithImageBlock";
@@ -16,11 +17,6 @@ export function InstitutionalBlockRenderer({
   if (block.type === "title") {
     return (
       <header className="flex flex-col gap-3 border-b border-zinc-200 pb-6">
-        {block.kicker ? (
-          <p className="font-helvetica-condensed text-sm font-black uppercase tracking-[0.15em] text-red-700 sm:text-base">
-            {block.kicker}
-          </p>
-        ) : null}
         <h1 className="font-helvetica-condensed text-4xl leading-tight font-black uppercase text-zinc-950 sm:text-5xl lg:text-6xl">
           {block.title}
         </h1>
@@ -55,6 +51,16 @@ export function InstitutionalBlockRenderer({
         image={block.image}
         imagePosition={block.imagePosition}
         content={block.content}
+      />
+    );
+  }
+
+  if (block.type === "location") {
+    return (
+      <InstitutionalLocationBlock
+        title={block.title}
+        subtitle={block.subtitle}
+        location={block.location}
       />
     );
   }

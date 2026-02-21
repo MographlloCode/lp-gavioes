@@ -29,6 +29,17 @@ export type InstitutionalImage = {
   aspectRatio?: "wide" | "standard" | "portrait" | "square";
 };
 
+export type InstitutionalLocation = {
+  name: string;
+  address: string;
+  neighborhood?: string;
+  zipCode?: string;
+  city?: string;
+  foundation?: string;
+  phone?: string;
+  mapQuery: string;
+};
+
 export type InstitutionalContentBlock =
   | {
       type: "title";
@@ -64,6 +75,12 @@ export type InstitutionalContentBlock =
       title?: string;
       description?: string;
       images: InstitutionalImage[];
+    }
+  | {
+      type: "location";
+      title?: string;
+      subtitle?: string;
+      location: InstitutionalLocation;
     };
 
 export type InstitutionalPage = {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { BiChevronLeft, BiChevronRight, BiX } from "react-icons/bi";
 
@@ -12,28 +12,15 @@ type InstitutionalGalleryBlockProps = {
   images: InstitutionalImage[];
 };
 
-function getAspectClass(aspectRatio: InstitutionalImage["aspectRatio"]) {
-  if (aspectRatio === "wide") {
-    return "aspect-[16/10]";
-  }
-
-  if (aspectRatio === "portrait") {
-    return "aspect-[3/4]";
-  }
-
-  if (aspectRatio === "square") {
-    return "aspect-square";
-  }
-
-  return "aspect-[4/3]";
-}
-
 export function InstitutionalGalleryBlock({
   title,
   description,
   images,
 }: InstitutionalGalleryBlockProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(images.length > 0);
 
   function openModal(index: number) {
     setSelectedIndex(index);
@@ -82,6 +69,43 @@ export function InstitutionalGalleryBlock({
 
   const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
+  const updateScrollState = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+
+    const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+    setCanScrollLeft(track.scrollLeft > 4);
+    setCanScrollRight(track.scrollLeft < maxScrollLeft - 4);
+  }, []);
+
+  useEffect(() => {
+    updateScrollState();
+  }, [images.length, updateScrollState]);
+
+  useEffect(() => {
+    function handleResize() {
+      updateScrollState();
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [updateScrollState]);
+
+  function scrollThumbnails(direction: "left" | "right") {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+
+    const amount = Math.max(360, track.clientWidth * 0.8);
+    track.scrollBy({
+      left: direction === "right" ? amount : -amount,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <section className="flex flex-col gap-4">
       {title ? (
@@ -93,32 +117,67 @@ export function InstitutionalGalleryBlock({
         <p className="text-base leading-relaxed text-zinc-700">{description}</p>
       ) : null}
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {images.map((image, index) => {
-          const isExternalImage =
-            image.src.startsWith("http://") || image.src.startsWith("https://");
-          const aspectClass = getAspectClass(image.aspectRatio);
+      <div className="flex flex-col gap-3">
+        <div
+          ref={trackRef}
+          onScroll={updateScrollState}
+          className="flex gap-4 overflow-x-auto scroll-smooth py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {images.map((image, index) => {
+            const isExternalImage =
+              image.src.startsWith("http://") || image.src.startsWith("https://");
 
-          return (
-            <button
-              key={`${image.src}-${index}`}
-              type="button"
-              onClick={() => openModal(index)}
-              className={`group relative w-full overflow-hidden rounded-sm border border-zinc-300 ${aspectClass}`}
-              aria-label={`Abrir imagem ${index + 1} da galeria`}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(min-width: 640px) 33vw, 50vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                unoptimized={isExternalImage}
-                referrerPolicy="no-referrer"
-              />
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={`${image.src}-${index}`}
+                type="button"
+                onClick={() => openModal(index)}
+                className="group relative h-56 w-[320px] shrink-0 overflow-hidden rounded-sm sm:h-64 sm:w-[380px] lg:h-72 lg:w-[430px]"
+                aria-label={`Abrir imagem ${index + 1} da galeria`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 430px, (min-width: 640px) 380px, 320px"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  unoptimized={isExternalImage}
+                  referrerPolicy="no-referrer"
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex items-center justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => scrollThumbnails("left")}
+            disabled={!canScrollLeft}
+            aria-label="Rolar galeria para a esquerda"
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white transition-colors duration-200 ${
+              canScrollLeft
+                ? "hover:bg-zinc-700"
+                : "pointer-events-none bg-zinc-300 text-zinc-100"
+            }`}
+          >
+            <BiChevronLeft size={28} />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => scrollThumbnails("right")}
+            disabled={!canScrollRight}
+            aria-label="Rolar galeria para a direita"
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white transition-colors duration-200 ${
+              canScrollRight
+                ? "hover:bg-zinc-700"
+                : "pointer-events-none bg-zinc-300 text-zinc-100"
+            }`}
+          >
+            <BiChevronRight size={28} />
+          </button>
+        </div>
       </div>
 
       {selectedImage ? (

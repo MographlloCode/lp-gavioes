@@ -87,6 +87,357 @@ export const institutionalPages: InstitutionalPage[] = [
     ],
   },
   {
+    slug: "associe-se",
+    section: "Institucional",
+    title: "Associe-se",
+    description:
+      "Informacoes de associacao e recadastramento com documentos, planos e formas de pagamento.",
+    blocks: [
+      {
+        type: "title",
+        kicker: "Gavioes da Fiel",
+        title: "Associe-se",
+        subtitle: "Nao e socio ainda? Quer fazer recadastramento?",
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "Para ser socio da torcida ou fazer seu recadastramento, compareca em nossa sede com os documentos abaixo.",
+              },
+            ],
+          },
+          {
+            kind: "subheading",
+            nodes: [{ text: "Primeiro passo - Documentos" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Ficha de inscricao disponibilizada na sede." }],
+              [{ text: "1 foto 3x4." }],
+              [{ text: "Copia do RG ou CNH." }],
+              [{ text: "Copia do comprovante de residencia." }],
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "Atencao: menores de 18 anos devem apresentar a ficha de autorizacao assinada pelos pais ou responsavel. ",
+              },
+              {
+                text: "Clique aqui para baixar a ficha de autorizacao",
+                link: "https://gavioes.com.br/4_2.pdf",
+                underline: true,
+              },
+              { text: "." },
+            ],
+          },
+        ],
+      },
+      {
+        type: "columns",
+        columns: [
+          [
+            {
+              kind: "subheading",
+              nodes: [{ text: "Segundo passo - Pagamento" }],
+            },
+            {
+              kind: "paragraph",
+              nodes: [{ text: "Novos socios:" }],
+            },
+            {
+              kind: "list",
+              items: [
+                [{ text: "Plano quadrimestral - R$ 50." }],
+                [{ text: "Plano anual - R$ 110." }],
+              ],
+            },
+          ],
+          [
+            {
+              kind: "subheading",
+              nodes: [{ text: "Formas de pagamento" }],
+            },
+            {
+              kind: "list",
+              items: [
+                [{ text: "Dinheiro." }],
+                [{ text: "Cartao de debito/credito." }],
+                [{ text: "Pix." }],
+              ],
+            },
+            {
+              kind: "paragraph",
+              nodes: [
+                {
+                  text: "Caso seja de outra cidade ou estado, entrar em contato pelo WhatsApp do Departamento de Mensalidades: (11) 94298-9699.",
+                },
+              ],
+            },
+          ],
+        ],
+      },
+      {
+        type: "location",
+        location: {
+          name: "Gavioes da Fiel Sede Principal",
+          address: "R. Cristina Tomas, 183",
+          neighborhood: "Bom Retiro",
+          zipCode: "01129-020",
+          city: "Sao Paulo-SP",
+          phone: "(11) 3221-2066",
+          mapQuery:
+            "R. Cristina Tomas, 183 - Bom Retiro, Sao Paulo - SP, 01129-020",
+        },
+      },
+    ],
+  },
+  {
+    slug: "conselho",
+    section: "Institucional",
+    title: "Conselho Deliberativo",
+    description:
+      "Historico, atribuicoes e composicao 2024 - 2027 do Conselho Deliberativo dos Gavioes da Fiel.",
+    blocks: [
+      {
+        type: "title",
+        kicker: "Institucional",
+        title: "Conselho Deliberativo",
+        subtitle:
+          "Estrutura administrativa historica dos Gavioes da Fiel, com funcao fiscalizadora e de orientacao da diretoria executiva.",
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "O Conselho Deliberativo dos Gavioes da Fiel foi criado desde a fundacao, em 1969. O principal objetivo era ser um agente fiscalizador e, ao mesmo tempo, dar suporte para toda a diretoria executiva, principalmente ao presidente, orientando e colaborando em todas as questoes necessarias.",
+              },
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "Os Gavioes da Fiel sao a primeira torcida organizada do Brasil a ter uma estrutura administrativa interna regida por regras estatutarias.",
+              },
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "No inicio, nao havia eleicoes para a escolha dos conselheiros, pois eram todos indicados por membros da diretoria. O criterio para fazer parte era pela caminhada na sede, conduta e por servicos prestados a entidade.",
+              },
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "As eleicoes para conselheiros comecaram somente em 1993, quando Jose Claudio de Almeida Moraes (Dentinho) foi escolhido para assumir a presidencia dos Gavioes. Anteriormente, o presidente era eleito pelo Conselho Deliberativo, composto por 40 pessoas: 20 conselheiros bienais e 20 conselheiros vitalicios.",
+              },
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "Como reza o Estatuto do Gremio Gavioes da Fiel Torcida, atualmente existem tres tipos de conselheiros: os trienais (escolhidos por meio do voto do associado), os vitalicios e os benemeritos. Os vitalicios (ex-presidentes e indicados) sempre podem participar do Conselho e ter poder de voto. Ja os benemeritos sao conselheiros vitalicios que, por algum motivo, nao conseguem comparecer a todas as reunioes; recebem o reconhecimento de benemeritos, podem frequentar as reunioes, mas nao possuem poder de voto.",
+              },
+            ],
+          },
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "Sao realizadas reunioes mensais sobre os mais variados assuntos, como aprovacao de balancos financeiros, atuacao dentro do Corinthians, reformas na estrutura e demais pautas pertinentes aos Gavioes e ao Corinthians. Ao Conselho cabe orientar a diretoria e preservar normas, regras e ideais presentes no estatuto.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Conselho Deliberativo 2024 - 2027" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Presidente: Raimundo Cesar Faustino (Capa)." }],
+              [{ text: "Vice-presidente: Joao Roberto Dutra (Dutra Itu)." }],
+              [{ text: "1o secretario: Ademilson Bueno Pires (Ademilson)." }],
+              [{ text: "2o secretario: Carlos Tadeu Miranda (Miranda)." }],
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Conselheiros benemeritos eleitos" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Raimundo Faustino (Capa)." }],
+              [{ text: "Edson Pereira (Nego Elson)." }],
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Conselheiros trienais eleitos" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Andre Vedovate (Dede Sapopemba)." }],
+              [{ text: "Andre Machado (Alemao)." }],
+              [{ text: "Bruno Machado (Gaga)." }],
+              [{ text: "Celso Ribeiro (Celso Guarulhos)." }],
+              [{ text: "Cleiton de Assis (Cleitinho)." }],
+              [{ text: "Danilo Pereira (Danilinho)." }],
+              [{ text: "Danilo Silva (Biu)." }],
+              [{ text: "Eder Luiz (Ed)." }],
+              [{ text: "Erico Almeida (Kinho)." }],
+              [{ text: "Felipe Cavalin (Gigante)." }],
+              [{ text: "Felipe Souza (Fell ULC)." }],
+              [{ text: "Gabriel Rodrigues (Gabriel Taboao)." }],
+              [{ text: "Kaue Deungaro (Kaue)." }],
+              [{ text: "Luiz Nogueira (Pilik)." }],
+              [{ text: "Marcos Rodrigo (Marcao)." }],
+              [{ text: "Moacir Rodrigues (Moacir ZL)." }],
+              [{ text: "Reginaldo Coelho (Kbcao Itaqua)." }],
+              [{ text: "Sergio Luis (Serginho ZN)." }],
+              [{ text: "Tiago Rocha (Tiaguinho)." }],
+              [{ text: "Wildner D Paula (Pulguinha)." }],
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Suplentes" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Joao Vitor (JV do Vale)." }],
+              [{ text: "Ednilson das Chagas (Ednilson)." }],
+              [{ text: "Raphael Sales (Cara Branca)." }],
+              [{ text: "Edjailson Silva (Perrechy)." }],
+              [{ text: "Jefferson Costa (Febem)." }],
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Conselho Fiscal - Titulares" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Eder Luiz (Ed)." }],
+              [{ text: "Kaue Deungaro (Kaue)." }],
+              [{ text: "Douglas Deungaro (Metaleiro)." }],
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Conselho Fiscal - Suplentes" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Luiz Nogueira (Pilik)." }],
+              [{ text: "Roberto Carlos Borges (Roberto Carlos)." }],
+              [{ text: "Joao Carlos Nascimento (Joao)." }],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "diretoria",
+    section: "Institucional",
+    title: "Diretoria Executiva",
+    description:
+      "Informacoes oficiais sobre a Diretoria Executiva eleita para o periodo 2024/2027.",
+    blocks: [
+      {
+        type: "title",
+        kicker: "Institucional",
+        title: "Diretoria Executiva",
+        subtitle:
+          "Composicao oficial da diretoria eleita pelos socios dos Gavioes da Fiel.",
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "paragraph",
+            nodes: [
+              {
+                text: "A Diretoria Executiva e eleita a cada tres anos pelos socios dos Gavioes da Fiel. Ela e responsavel por administrar as atividades que envolvem a torcida e o carnaval.",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "richText",
+        content: [
+          {
+            kind: "subheading",
+            nodes: [{ text: "Composicao da diretoria 2024/2027" }],
+          },
+          {
+            kind: "list",
+            items: [
+              [{ text: "Presidente: Alexandre Domenico Pereira (Ale)." }],
+              [
+                {
+                  text: "Vice-Presidente: Fabio de Oliveira Camara (Fantasma) - Sergio Luis Lopes de Barros (Serginho).",
+                },
+              ],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: "identidade-gavioes",
     section: "Institucional",
     title: "Identidade e legado da Gavioes da Fiel",
@@ -286,7 +637,52 @@ export const institutionalPages: InstitutionalPage[] = [
             credit: "Loja Gavioes",
             aspectRatio: "square",
           },
+          {
+            src: "/gavioes_torcida.png",
+            alt: "Torcida da Gavioes com bandeiras",
+            caption: "Arquivo historico da torcida em festa.",
+            credit: "Acervo Gavioes",
+            aspectRatio: "standard",
+          },
+          {
+            src: "/gavioes_torcida_2.png",
+            alt: "Setor alvinegro lotado com a Gavioes",
+            caption: "Ambiente de arquibancada em jogo importante.",
+            credit: "Acervo Gavioes",
+            aspectRatio: "wide",
+          },
+          {
+            src: "/camisa_gavioes_02.png",
+            alt: "Detalhe da camisa preta da Gavioes",
+            caption: "Linha oficial em destaque na galeria.",
+            credit: "Loja Gavioes",
+            aspectRatio: "square",
+          },
+          {
+            src: "/camisa_gavioes_03.png",
+            alt: "Camisa listrada institucional da Gavioes",
+            caption: "Versao alternativa para demonstrar o carrossel.",
+            credit: "Loja Gavioes",
+            aspectRatio: "square",
+          },
         ],
+      },
+      {
+        type: "location",
+        title: "Bloco de localizacao institucional",
+        subtitle:
+          "Este componente permite publicar dados de sede ou subsede com mapa incorporado e informacoes estruturadas.",
+        location: {
+          name: "Gavioes da Fiel SubSede ABC",
+          address: "Rua dos Coqueiros, 100",
+          neighborhood: "Campestre",
+          zipCode: "090080-010",
+          city: "Santo Andre-SP",
+          foundation: "01/10/1992",
+          phone: "Nao informado",
+          mapQuery:
+            "Rua dos Coqueiros, 100, Campestre, Santo Andre - SP, 090080-010",
+        },
       },
       {
         type: "richText",
