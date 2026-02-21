@@ -13,9 +13,10 @@ export const navbarData: { navItems: NavItem[] } = {
             { id: "nos_subitem_02", name: "Quem Somos", link: "/institucional/quem-somos" },
             { id: "nos_subitem_03", name: "Conselho", link: "/institucional/conselho" },
             { id: "nos_subitem_04", name: "Diretoria", link: "/institucional/diretoria" },
-            { id: "nos_subitem_05", name: "Ex-presidentes", link: "https://gavioes.com.br/presidentes.php" },
-            { id: "nos_subitem_06", name: "Estatuto Gaviões da Fiel", link: "https://gavioes.com.br/estatuto-gavioes-da-fiel.php" },
-            { id: "nos_subitem_07", name: "Subsedes", link: "https://gavioes.com.br/sub-sede.php" },
+            { id: "nos_subitem_05", name: "Ex-presidentes", link: "/institucional/ex-presidentes" },
+            { id: "nos_subitem_06", name: "Estatuto Gaviões da Fiel", link: "/institucional/estatuto" },
+            { id: "nos_subitem_07", name: "Palavra do Presidente", link: "/institucional/palavra-do-presidente" },
+            { id: "nos_subitem_08", name: "Subsedes", link: "/institucional/subsedes" },
           ],
         },
         {

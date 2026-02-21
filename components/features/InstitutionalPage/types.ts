@@ -40,6 +40,16 @@ export type InstitutionalLocation = {
   mapQuery: string;
 };
 
+export type InstitutionalSourceItem = {
+  label: string;
+  href?: string;
+};
+
+export type InstitutionalYouTubeVideo = {
+  url: string;
+  title?: string;
+};
+
 export type InstitutionalContentBlock =
   | {
       type: "title";
@@ -81,6 +91,22 @@ export type InstitutionalContentBlock =
       title?: string;
       subtitle?: string;
       location: InstitutionalLocation;
+    }
+  | {
+      type: "sources";
+      title?: string;
+      items: InstitutionalSourceItem[];
+    }
+  | {
+      type: "youtubeVideo";
+      title?: string;
+      subtitle?: string;
+      video: InstitutionalYouTubeVideo;
+    }
+  | {
+      type: "subsedesDirectory";
+      title?: string;
+      subtitle?: string;
     };
 
 export type InstitutionalPage = {

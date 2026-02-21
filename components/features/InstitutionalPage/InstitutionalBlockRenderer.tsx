@@ -4,7 +4,10 @@ import { InstitutionalImageBlock } from "./InstitutionalImageBlock";
 import { InstitutionalLocationBlock } from "./InstitutionalLocationBlock";
 import { InstitutionalQuoteBlock } from "./InstitutionalQuoteBlock";
 import { InstitutionalRichText } from "./InstitutionalRichText";
+import { InstitutionalSubsedesDirectoryBlock } from "./InstitutionalSubsedesDirectoryBlock";
+import { InstitutionalSourcesBlock } from "./InstitutionalSourcesBlock";
 import { InstitutionalTextWithImageBlock } from "./InstitutionalTextWithImageBlock";
+import { InstitutionalYoutubeVideoBlock } from "./InstitutionalYoutubeVideoBlock";
 import type { InstitutionalContentBlock } from "./types";
 
 type InstitutionalBlockRendererProps = {
@@ -61,6 +64,29 @@ export function InstitutionalBlockRenderer({
         title={block.title}
         subtitle={block.subtitle}
         location={block.location}
+      />
+    );
+  }
+
+  if (block.type === "sources") {
+    return <InstitutionalSourcesBlock title={block.title} items={block.items} />;
+  }
+
+  if (block.type === "youtubeVideo") {
+    return (
+      <InstitutionalYoutubeVideoBlock
+        title={block.title}
+        subtitle={block.subtitle}
+        video={block.video}
+      />
+    );
+  }
+
+  if (block.type === "subsedesDirectory") {
+    return (
+      <InstitutionalSubsedesDirectoryBlock
+        title={block.title}
+        subtitle={block.subtitle}
       />
     );
   }
