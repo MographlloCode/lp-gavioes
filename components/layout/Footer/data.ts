@@ -53,7 +53,7 @@ export const footerSections: FooterSection[] = [
 
 export const footerLinks: FooterLink[] = [
   { label: "CONTATO", href: "https://gavioes.com.br/contato.php" },
-  { label: "NOTÍCIAS", href: "https://gavioes.com.br/noticias.php" },
+  { label: "NOTÍCIAS", href: "/noticias" },
   { label: "POLÍTICA DE PRIVACIDADE", href: "https://gavioes.com.br/politica-de-privacidade" },
 ];
 

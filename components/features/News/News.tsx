@@ -16,7 +16,7 @@ export function News() {
       <NewsDesktopMosaic items={newsItems} />
 
       <Link
-        href="https://gavioes.com.br/noticias.php"
+        href="/noticias"
         className="hidden font-helvetica-condensed text-2xl font-black uppercase underline underline-offset-4 transition-all duration-400 ease-in-out hover:underline-offset-8 lg:inline-flex"
       >
         Ver mais notícias

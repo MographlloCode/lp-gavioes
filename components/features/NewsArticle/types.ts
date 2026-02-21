@@ -15,6 +15,9 @@ export type NewsArticleRelatedItem = {
   href: string;
   kicker?: string;
   timestamp?: string;
+  description?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
 export type NewsArticleBodyBlock =
@@ -51,6 +54,7 @@ export type NewsArticle = {
   lead: string;
   body: NewsArticleBodyBlock[];
   related: NewsArticleRelatedItem[];
+  recommendations?: NewsArticleRelatedItem[];
   mostRead: NewsArticleRelatedItem[];
   tags: string[];
 };

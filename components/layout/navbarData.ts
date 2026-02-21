@@ -69,7 +69,7 @@ export const navbarData: { navItems: NavItem[] } = {
         },
       ],
     },
-    { id: "noticias", name: "Notícias", link: "https://gavioes.com.br/noticias.php" },
+    { id: "noticias", name: "Notícias", link: "/noticias" },
     { id: "contato", name: "Contato", link: "https://gavioes.com.br/contato.php" },
   ],
 };
