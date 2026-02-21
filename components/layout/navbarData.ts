@@ -10,7 +10,7 @@ export const navbarData: { navItems: NavItem[] } = {
           id: "group_01",
           items: [
             { id: "nos_subitem_01", name: "Associe-se", link: "https://gavioes.com.br/associe-se.php" },
-            { id: "nos_subitem_02", name: "Quem Somos", link: "https://gavioes.com.br/quem-somos.php" },
+            { id: "nos_subitem_02", name: "Quem Somos", link: "/institucional/quem-somos" },
             { id: "nos_subitem_03", name: "Conselho", link: "https://gavioes.com.br/conselho.php" },
             { id: "nos_subitem_04", name: "Diretoria", link: "https://gavioes.com.br/diretoria.php" },
             { id: "nos_subitem_05", name: "Ex-presidentes", link: "https://gavioes.com.br/presidentes.php" },
