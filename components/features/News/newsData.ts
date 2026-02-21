@@ -11,14 +11,14 @@ export type NewsItem = {
 export const newsItems: NewsItem[] = [
   {
     id: "news_01",
-    tag: "Carnaval",
-    title: "Gaviões da Fiel é segunda colocada no Carnaval e garante vaga no desfile das campeãs de 2026",
+    tag: "Torcida",
+    title:
+      "Gaviões prepara festa com mosaico e cortejo para decisão na Neo Química Arena",
     description:
-      "A escola da Gaviões encerrou a apuração entre as primeiras colocadas do Grupo Especial e confirmou presença no Desfile das Campeãs. O resultado mantém a agremiação em destaque no Carnaval paulista e reforça a boa sequência recente.",
-    href: "https://www.meutimao.com.br/noticias-do-corinthians/527346/gavioes-da-fiel-e-segunda-colocada-no-carnaval-e-garante-vaga-no-desfile-das-campeas-de-2026",
-    imageSrc:
-      "https://cdn.meutimao.com.br/_upload/noticia/2026/02/17/gavioes-da-fiel-e-vice-campea-no-carnaval-de-2026-g941w.jpg",
-    imageAlt: "Desfile da Gaviões da Fiel no Carnaval de 2026",
+      "A organizada divulgou o plano completo para a recepção do time em Itaquera, com logística de acesso, materiais visuais e campanha de doações.",
+    href: "/noticias/gavioes-prepara-festa-neo-quimica-arena",
+    imageSrc: "/gavioes_torcida_2.png",
+    imageAlt: "Torcida da Gaviões da Fiel nas arquibancadas",
   },
   {
     id: "news_02",

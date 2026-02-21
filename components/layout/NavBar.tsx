@@ -17,7 +17,7 @@ import { navbarData } from "./navbarData";
 import { getPhpLinkTargetProps } from "./linkUtils";
 
 const { navItems } = navbarData;
-const brandHref = "https://gavioes.com.br/index.php";
+const brandHref = "/";
 const brandPhpLinkTargetProps = getPhpLinkTargetProps(brandHref);
 
 export function NavBar() {
